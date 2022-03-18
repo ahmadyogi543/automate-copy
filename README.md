@@ -12,8 +12,7 @@ Untuk menggunakan program ini, tinggal mengetikkan _path_ folder sumber `src_pat
 
 Format _config.txt_ **jangan pernah diubah**, hanya ubah yang memang perlu diubah saja!
 
-```python
-[setup]
+```
 src_path=PATH_ABSOLUTE_FOLDER_SUMBER
 dst_path=PATH_ABSOLUTE_FOLDER_TUJUAN
 folder_list=folder1,folder2,folder3....
