@@ -1,11 +1,18 @@
 from shutil import copytree
 from os import system, name as os_name
 
+
+def print_msg(msg):
+    print(msg)
+    input("\nTekan enter untuk keluar...")
+
+
 def header():
     print("===========================")
     print("++ Automate Copy - Python++")
     print("===========================")
     print()
+
 
 def clear_screen():
     if os_name == "nt":
@@ -14,11 +21,13 @@ def clear_screen():
         system("clear")
     header()
 
+
 def get_separator():
-	if os_name == "nt":
-		return "\\"
-	else:
-		return "/"
+    if os_name == "nt":
+        return "\\"
+    else:
+        return "/"
+
 
 def main():
     try:
@@ -38,28 +47,26 @@ def main():
                     full_dst_path = dst_path + separator + fl
                     copytree(full_src_path, full_dst_path)
                 clear_screen()
-                print("Tugas selesai, semua folder sudah tersalin pada folder tujuan!")
-                input("\nTekan enter untuk keluar...")
+                print_msg(
+                    "Tugas selesai, semua folder sudah tersalin pada folder tujuan!")
 
             except FileExistsError:
                 clear_screen()
-                print("Error Message: folder yang ingin disalin sudah ada!")
-                input("\nTekan enter untuk keluar...")
+                print_msg("Error: folder yang ingin disalin sudah ada!")
 
             except FileNotFoundError:
                 clear_screen()
-                print("Error Message: folder tujuan atau destinasi salah!")
-                input("\nTekan enter untuk keluar...")
+                print_msg("Error: folder tujuan atau destinasi salah!")
 
         except IndexError:
             clear_screen()
-            print("Error Message: pastikan format dari config.txt sudah sesuai!")
-            input("\nTekan enter untuk keluar...")
+            print_msg(
+                "Error: pastikan format dari config.txt sudah sesuai!")
 
     except FileNotFoundError:
         clear_screen()
-        print("Error Message: file config.txt tidak ada, pastikan file tersebut berada pada satu folder dengan program!")
-        input("\nTekan enter untuk keluar...")
+        print_msg(
+            "Error: file config.txt tidak ada, pastikan file tersebut berada pada satu folder dengan program!")
 
 
 if __name__ == '__main__':
