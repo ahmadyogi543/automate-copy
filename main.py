@@ -1,12 +1,7 @@
 from shutil import copytree
 from os import system, name as os_name
 
-
-def print_msg(msg):
-    print(msg)
-    input("\nTekan enter untuk keluar...")
-
-
+# helper function
 def header():
     print("===========================")
     print("++ Automate Copy - Python++")
@@ -22,13 +17,19 @@ def clear_screen():
     header()
 
 
+def print_msg(msg):
+    clear_screen()
+    print(msg)
+    input("\nTekan enter untuk keluar...")
+
+
 def get_separator():
     if os_name == "nt":
         return "\\"
     else:
         return "/"
 
-
+# driver code
 def main():
     try:
         with open("config.txt", "r") as file:
@@ -46,27 +47,19 @@ def main():
                     full_src_path = src_path + separator + fl
                     full_dst_path = dst_path + separator + fl
                     copytree(full_src_path, full_dst_path)
-                clear_screen()
-                print_msg(
-                    "Tugas selesai, semua folder sudah tersalin pada folder tujuan!")
+                print_msg("Tugas selesai, semua folder sudah tersalin pada folder tujuan!")
 
             except FileExistsError:
-                clear_screen()
                 print_msg("Error: folder yang ingin disalin sudah ada!")
 
             except FileNotFoundError:
-                clear_screen()
                 print_msg("Error: folder tujuan atau destinasi salah!")
 
         except IndexError:
-            clear_screen()
-            print_msg(
-                "Error: pastikan format dari config.txt sudah sesuai!")
+            print_msg("Error: pastikan format dari config.txt sudah sesuai!")
 
     except FileNotFoundError:
-        clear_screen()
-        print_msg(
-            "Error: file config.txt tidak ada, pastikan file tersebut berada pada satu folder dengan program!")
+        print_msg("Error: file config.txt tidak ada, pastikan file tersebut berada pada satu folder dengan program!")
 
 
 if __name__ == '__main__':
