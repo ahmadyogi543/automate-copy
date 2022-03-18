@@ -1,0 +1,3 @@
+src_path=/home/ahmad/Documents/kampus-merdeka/
+dst_path=/home/ahmad/Public/
+folder_list=docs,EE-Hacktivate,RCTN-Hacktivate
